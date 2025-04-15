@@ -1,0 +1,63 @@
+                                                                                                  881. Boats to Save People
+class Solution {
+public:
+    int numRescueBoats(vector<int>& people, int limit) {
+        // // Input: people = [3,5,3,4], limit = 5
+        // // Output: 4
+        // // Explanation: 4 boats (3), (3), (4), (5)
+        // int currcap=limit;
+        // int newcap=0;
+        // int count=0;
+        // int ans;
+        // sort(people.begin(),people.end(),greater<int>());
+        // //3,3,4,5
+        // int i=0;
+        // while(i<people.size())
+        // {
+        //     if(people[i]<=currcap)
+        //     {
+        //         currcap-=people[i];
+        //         newcap=currcap;
+        //         i++;
+        //     }
+        //     else if(newcap<people[i])
+        //     {
+        //         count++;
+        //         currcap=limit;
+        //            i++;
+        //     }
+        //     else{
+        //           return count;
+
+        //     }
+         
+
+        // }
+        // return count;
+
+         sort(people.begin(), people.end()); 
+
+        int i = 0;
+        int j = people.size() - 1;
+        int count = 0;
+
+        while (i <= j) {
+            if (people[i] + people[j] <= limit) {
+                // Pair heaviest (i) with lightest (j)
+                i++;
+                j--;
+            }
+           else{
+            j--;
+            
+           }
+           count+=1;
+        }
+
+        return count;
+        
+
+
+        
+    }
+};
