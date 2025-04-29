@@ -28,8 +28,8 @@ int activitySelection(vector<int> &start, vector<int> &finish)
     {
         vector<int> activity = arr[i];
 
-        if (activity[1] > finishtime)  //if finishing time of current activity is greater then the finish time of the last activity then, 
-        //it needs to be included in the current process,so modification of finish time is done by the larger finish time
+        if (activity[1] > finishtime)  //if starting time of the new activity is greater then the finish time of the last activity then, 
+        //it canbe done nextly ,so modification of finish time is done by the larger finish time.
         {
             finishtime = activity[0];
             ans++;
