@@ -1,0 +1,44 @@
+class Solution {
+public:
+    int maximumUnits(vector<vector<int>>& boxTypes, int truckSize) {
+        
+   sort(boxTypes.begin(), boxTypes.end(), [](const vector<int>& a, const vector<int>& b) {
+    return a[1] > b[1];
+});
+
+int i=0;
+int boxcount=0;
+int quant=0;
+int ans=0;
+int totalunits=0;
+while(i<boxTypes.size())
+{
+   boxcount=boxTypes[i][0];
+   quant=boxTypes[i][1];
+  
+   if(boxcount<=truckSize)
+   {
+    ans=boxcount*quant;
+    totalunits+=ans;
+    truckSize-=boxcount;
+   }
+   else{
+      //check kia ki mere katte mien kitne ki capacity hai bas utna lelo direct baaki jab leleo to katte ma much band kardo baandh ke
+        ans = truckSize * quant; 
+        totalunits += ans;
+        truckSize = 0; // Truck is full- katte ka muh band kardia hai baandh ke
+ 
+
+    
+}
+  i++;
+// return totalunits;
+}
+return totalunits;
+    }
+
+
+
+        
+    
+};
