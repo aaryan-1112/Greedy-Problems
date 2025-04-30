@@ -1,0 +1,29 @@
+//This Approach follows greedy concept:-
+class Solution {
+public:
+    int leastInterval(vector<char>& tasks, int n) {
+        vector<int>mp(26,0);
+        for(auto &ch: tasks)
+        {
+            mp[ch-'A']++;
+        }
+        sort(mp.begin(),mp.end());
+        int maxfreq=mp[25];
+        int gaddhe=maxfreq-1;
+        int idle_slots=n*gaddhe;
+        
+        for(int i=24;i>=0;i--)
+        {
+            idle_slots-=min(mp[i],gaddhe);
+        }
+        if(idle_slots>0)
+        {
+              return tasks.size()+idle_slots;
+            
+        }
+        
+        return tasks.size();
+
+        
+    }
+};
